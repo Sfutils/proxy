@@ -1,7 +1,7 @@
 const axios = require('axios');
 const config = require('../../config/index');
 
-ScdContratosDocumentoCompleto =  (req, res) => {
+Endereco =  (req, res) => {
 
   const headers = {
     headers: {
@@ -10,7 +10,7 @@ ScdContratosDocumentoCompleto =  (req, res) => {
     }}
   
     axios.
-    get(`${config.financeira.baseUrl}/api/v1/scd/Contratos/${req.params.cpfCnpj}/Detalhado`, headers)
+    get(`${config.financeira.baseUrl}/api/v1/epf/Endereco/${req.params.cep}`, headers)
     .then((resp) => {
     const jsonText = JSON.stringify(resp.data);
     const responseObject = JSON.parse(jsonText);
@@ -23,5 +23,5 @@ ScdContratosDocumentoCompleto =  (req, res) => {
 
 }
 module.exports = {
-  ScdContratosDocumentoCompleto
+  Endereco
 }

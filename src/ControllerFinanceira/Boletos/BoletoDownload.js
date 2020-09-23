@@ -1,16 +1,15 @@
 const axios = require('axios');
 const config = require('../../config/index');
 
-ScdContratosDocumentoCompleto =  (req, res) => {
+BoletoDownload =  (req, res) => {
 
   const headers = {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': req.headers['authorization']
     }}
-  
     axios.
-    get(`${config.financeira.baseUrl}/api/v1/scd/Contratos/${req.params.cpfCnpj}/Detalhado`, headers)
+    get(`${config.financeira.baseUrl}/api/v1/scd/Boletos/${req.params.idContrato}/Download`, headers)
     .then((resp) => {
     const jsonText = JSON.stringify(resp.data);
     const responseObject = JSON.parse(jsonText);
@@ -23,5 +22,5 @@ ScdContratosDocumentoCompleto =  (req, res) => {
 
 }
 module.exports = {
-  ScdContratosDocumentoCompleto
+  BoletoDownload
 }
