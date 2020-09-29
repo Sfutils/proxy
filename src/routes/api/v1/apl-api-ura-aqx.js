@@ -7,6 +7,7 @@ const BloquearCliente = require('../../../ControllerFinanceira/BloquearCliente/B
 const Boletos = require('../../../ControllerFinanceira/Boletos/index');
 const BuscaDadosCpf = require('../../../ControllerFinanceira/BuscaDadosCpf/BuscaDadosCpf');
 const Carnes = require('../../../ControllerFinanceira/Carnes/index');
+const Cartao = require('../../../ControllerFinanceira/Cartao/index');
 const CelularCliente = require('../../../ControllerFinanceira/CelularCliente/CelularCliente');
 const ConsultaAni = require('../../../ControllerFinanceira/ConsultaAni/index');
 const Contratos = require('../../../ControllerFinanceira/Contratos/index');
@@ -49,13 +50,17 @@ routes
 .get('/api/v1/scd/Carnes/:idContrato/Download', Carnes.CarnesDownload.CarnesDownload);
 routes
 .post('/api/v1/scd/Carnes/Email', Carnes.CarnesEmail.CarnesEmail);
+
+routes
+.get('/api/v1/epf/Cartao/:idCliente/Status', Cartao.CartaoEpfStatus.CartaoEpfStatus);
+routes
+.get('/api/v1/epf/Cartao/:idCliente/Limite', Cartao.CartaoEpfLimite.CartaoEpfLimite);
+
 routes
 .get('/api/v1/scd/CelularCliente/:idContrato', CelularCliente.CelularCliente);
 
-
 routes
 .get('/api/v1/epf/Correspondente/:idContrato', Correspondente.correspondente);
-
 
  routes
  .get('/api/v1/scd/ConsultaAni/:numTelefone', 
@@ -69,6 +74,13 @@ routes
  routes
  .get('/api/v1/scd/Contratos/:cpfCnpj/Detalhado', 
  Contratos.ScdContratosDocumentoCompleto.ScdContratosDocumentoCompleto);
+ routes
+ .get('/api/v1/solar/Contratos/:cpfCnpj', 
+ Contratos.SolarContratosDocumento.SolarContratosDocumento);
+ routes
+ .get('/api/v1/solar/Contratos/:idContrato/Detalhes', 
+ Contratos.SolarContratosDetalhes.SolarContratosDetalhes);
+
  routes
  .get('/api/v1/scd/Contratos/:cpfCnpj/:idContrato', 
  Contratos.ScdContratosDocumentoEidContrato.ScdContratosDocumentoEidContrato);
