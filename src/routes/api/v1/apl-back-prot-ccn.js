@@ -12,5 +12,10 @@ routes
 routes
 .get('/apl-back-prot-ccn/protocolos/idProtocolo/:idProtocolo', indexProtocolo.ConsultarProtocoloPorId.ConsultarProtocoloPorId);
 
+routes
+.get('/protocolos/documento/:documento/status/:status/quantidade/:quantidade', indexProtocolo.ConsultaProtocoloPorDocumento.ConsultaProtocoloPorDocumento);
+
+
+
 
 module.exports = routes;
