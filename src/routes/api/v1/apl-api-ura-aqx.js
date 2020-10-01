@@ -27,10 +27,16 @@ const StatusContrato = require('../../../ControllerFinanceira/StatusContrato/Sta
 const StatusProposta = require('../../../ControllerFinanceira/StatusProposta/StatusProposta');
 const Token = require('../../../ControllerFinanceira/Token/Token');
 
+const Parcelas = require('../../../ControllerFinanceira/Parcelas/index');
+
 
 routes
 .post('/api/v1/scd/AntecipacaoParcelas', 
 AntecipacaoParcelas.AntecipacaoParcelas);
+
+routes
+.get('/api/v1/scd/Parcelas/:idContrato/Saldo', Parcelas.saldoParcela);
+
 routes
 .get('/api/v1/scd/AutenticacaoPositiva/:idContrato', 
 AutenticacaoPositiva.AutenticacaoPositiva);
