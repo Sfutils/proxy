@@ -97,7 +97,7 @@ routes
  .post('/api/v1/scd/Contratos/CopiaContrato/Email', 
  Contratos.ScdContratosDocumentoEmail.ScdContratosDocumentoEmail);
  routes
- .get('/api/v1/epf/Contratos/:idCliente', 
+ .get('/api/v2/epf/Contratos/:idCliente', 
  Contratos.EpfContratosIdCliente.EpfContratosIdCliente);
  routes
  .get('/api/v1/epf/Contratos/:idCliente/:idContrato', 
