@@ -11,7 +11,7 @@ const ScdContratosDownload = require('./ScdContratosDownload');
 
 const SolarContratosDetalhes = require('./SolarContratosDetalhes');
 const SolarContratosDocumento = require('./SolarContratosDocumento');
-
+const EpfExtrato = require('./EpfExtrato');
 
 
 module.exports = {
@@ -25,5 +25,6 @@ module.exports = {
   ScdContratosDocumentoEmail,
   ScdContratosDownload,
   SolarContratosDocumento,
-  SolarContratosDetalhes
+  SolarContratosDetalhes,
+  EpfExtrato
 }
