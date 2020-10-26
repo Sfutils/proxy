@@ -8,7 +8,7 @@ getResource =  async (req, res) => {
   const headers = {
        headers: {
          'Content-Type': 'application/json',
-         'Authorization': 'Key c2FmcmFwcm9kY29uc2lnYmlvd2E6T1Z1WU1zQlN6YjgyRTJIblJOYkE='
+         'Authorization': 'Key Y29udHJhdGFjYW9jb25zaWduYWRvYmV0YTpXdFRLajN4NjBIYVdDbGQyTzRiQQ=='
        }}
 
    const payload = {  
@@ -17,7 +17,7 @@ getResource =  async (req, res) => {
     "uri": `/resources/${req.params.id}`
   }
   
-    const response = await axios.post(`${config.baseUrl}/commands`, payload,headers);
+    const response = await axios.post(`${config.formalizacao.baseUrl}/commands`, payload,headers);
     const jsonText = JSON.stringify (response.data);
     const responseObject = JSON.parse (jsonText);
 
@@ -31,7 +31,7 @@ getResource =  async (req, res) => {
   const headers = {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Key c2FmcmFwcm9kY29uc2lnYmlvd2E6T1Z1WU1zQlN6YjgyRTJIblJOYkE='
+      'Authorization': 'Key Y29udHJhdGFjYW9jb25zaWduYWRvYmV0YTpXdFRLajN4NjBIYVdDbGQyTzRiQQ=='
     }}
 
 const payload = {  
@@ -40,7 +40,7 @@ const payload = {
  "uri": `/resources/${req.params.id}`
 }
 
- const response = await axios.post(`${config.baseUrl}/commands`, payload,headers);
+ const response = await axios.post(`${config.formalizacao.baseUrl}/commands`, payload,headers);
 
 
       response.data.resource['Template'] = req.params.template;
@@ -56,8 +56,8 @@ const payload = {
 
   }
 
-       const response2 = await axios.post(`${config.baseUrl}/commands`, payload2,headers);
-       const response3 = await axios.post(`${config.baseUrl}/commands`, payload,headers);
+       const response2 = await axios.post(`${config.formalizacao.baseUrl}/commands`, payload2,headers);
+       const response3 = await axios.post(`${config.formalizacao.baseUrl}/commands`, payload,headers);
 
        
        const jsonText = JSON.stringify (response3.data);

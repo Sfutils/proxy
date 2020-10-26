@@ -1,7 +1,7 @@
 const  fs = require("fs");
 const request = require('request');
 const axios = request('axios');
-
+const config = require('../config/index');
 getDocumentPdf = (req, res) => {
 
   try {
@@ -13,7 +13,7 @@ getDocumentPdf = (req, res) => {
 
   request(uri).pipe(fs.createWriteStream(path.resolve('./document/'+ nomeArquivo))).on('close',  () => {
     
-      axios.post(config.urlArtefato, payload,headers).then((resp) => {
+      axios.post(config.formalizacao.urlArtefato, payload,headers).then((resp) => {
 
         const jsonText3 = JSON.stringify(resp.data);
         const responseObject3 = JSON.parse(jsonText3);

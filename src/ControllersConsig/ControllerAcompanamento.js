@@ -19,7 +19,7 @@ acompanhamento =  (req, res) => {
     
       try {
         
-        axios.post(config.urlAcompanhamento, payload,headers).then((resp) => {
+        axios.post(config.formalizacao.urlAcompanhamento, payload,headers).then((resp) => {
   
            //const jsonText3 = JSON.stringify(resp.data);
           // const responseObject3 = JSON.parse(jsonText3);

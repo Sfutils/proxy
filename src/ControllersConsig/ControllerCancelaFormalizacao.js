@@ -17,7 +17,7 @@ cancelaFormalizacao =  (req, res) => {
       'Authorization': req.headers['authorization']
     }}
 
-      axios.post(config.urlCancelmentoFormalizacao, payload,headers).then((resp) => {
+      axios.post(config.formalizacao.urlCancelmentoFormalizacao, payload,headers).then((resp) => {
 
         const jsonText3 = JSON.stringify(resp.data);
         const responseObject3 = JSON.parse(jsonText3);

@@ -44,7 +44,7 @@ artefatoImage = async (req, res) => {
               "arquivo": new Buffer(fs.readFileSync(path.resolve('./download/'+ nomeArquivo))).toString('base64'),
               "nomeArquivo": nomeArquivo
    }
-      axios.post(config.urlArtefato, payload,headers).then((resp) => {
+      axios.post(config.formalizacao.urlArtefato, payload,headers).then((resp) => {
 
         const jsonText3 = JSON.stringify(resp.data);
         const responseObject3 = JSON.parse(jsonText3);
@@ -192,7 +192,7 @@ artefatosHistory = async (req, res) => {
               "uri": `/threads/${identity}?$take=100&storageDate=${moment().format('YYYY-MM-DD')}`
   }
           
-       const response2 = await axios.post(`${config.baseUrl}/commands`, payload,headers);
+       const response2 = await axios.post(`${config.formalizacao.baseUrl}/commands`, payload,headers);
   
        const conversaBot =  response2.data.resource.items.map((e) => 
          {
@@ -261,7 +261,7 @@ artefatosHistory = async (req, res) => {
                   "nomeArquivo": `history-${idProposta}.json`
                }
           
-          axios.post(config.urlArtefato, payload2,headers2).then((resp) => {
+          axios.post(config.formalizacao.urlArtefato, payload2,headers2).then((resp) => {
 
             const jsonText3 = JSON.stringify(resp.data);
             const responseObject3 = JSON.parse(jsonText3);

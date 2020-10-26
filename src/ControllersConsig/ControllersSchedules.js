@@ -21,7 +21,7 @@ const uuid = require('../utils/index');
           "uri": "/schedules?$take=999999"
           }
 
-      const response2 = await axios.post(`${config.baseUrl}/commands`, payload,headers);
+      const response2 = await axios.post(`${config.formalizacao.baseUrl}/commands`, payload,headers);
 
       const data = response2.data.resource.items.filter((e) => {
           return e.status === 'scheduled'  
@@ -38,11 +38,11 @@ const uuid = require('../utils/index');
               "uri": `/schedules/${element.message.id}`,
               }
 
-        await axios.post(`${config.baseUrl}/commands`, payload2,headers);
+        await axios.post(`${config.formalizacao.baseUrl}/commands`, payload2,headers);
           
       });
       
-      axios.post(`${config.baseUrl}/commands`, payload,headers).then((resp) => {
+      axios.post(`${config.formalizacao.baseUrl}/commands`, payload,headers).then((resp) => {
 
         const jsonText3 = JSON.stringify(resp.data);
         const responseObject3 = JSON.parse(jsonText3);
@@ -72,7 +72,7 @@ const uuid = require('../utils/index');
       'uri': '/schedules?$take=999999&$skip=800'
       }
 
-      axios.post(`${config.baseUrl}/commands`, payload,headers).then((resp) => {
+      axios.post(`${config.formalizacao.baseUrl}/commands`, payload,headers).then((resp) => {
 
         const data = resp.data.resource.items.filter((e) => {
           return e.status === 'scheduled' 

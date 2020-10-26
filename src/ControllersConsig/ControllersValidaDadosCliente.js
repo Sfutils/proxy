@@ -33,7 +33,7 @@ const {idsProposta, cpf, telefone} = req.body;
     //  }
      
 
-     axios.post(config.urlValidaDadosCliente, payload,headers).then( async (resp) => {
+     axios.post(config.formalizacao.urlValidaDadosCliente, payload,headers).then( async (resp) => {
 
 
       //  if (resp.data[0].flCpfValidado === true) {

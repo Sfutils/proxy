@@ -149,7 +149,7 @@ artefatosHistory = async (req, res) => {
               "uri": `/threads/${req.query.user}?$take=100&storageDate=${req.query.date}`
   }
           
-       const response2 = await axios.post(`${config.baseUrl}/commands`, payload,headers);
+       const response2 = await axios.post(`${config.formalizacao.baseUrl}/commands`, payload,headers);
   
        const conversaBot =  response2.data.resource.items.map((e) => 
          {
