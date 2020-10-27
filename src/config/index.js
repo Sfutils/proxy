@@ -1,7 +1,7 @@
 module.exports = {
 
   formalizacao:{
-    baseUrl:'https://http.msging.net',
+    baseUrl:'https://Safra.http.msging.net',
     uploads:'./download',
     pdf:'./save_file_path',
     urlAcompanhamento:'https://api-h.safrafinanceira.com.br/apl-api-formalizacao-consignado/api/v1/AcompanhamentoFormalizacao',

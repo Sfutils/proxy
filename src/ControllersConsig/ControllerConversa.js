@@ -1,24 +1,10 @@
 
 const axios = require('axios');
-const request = require('request');
-const  pdf = require('html-pdf');
-const  moment = require('moment'); 
-const  fs = require("fs");
-const path = require("path")
-var Base64 = require('js-base64').Base64;
 const uuid = require('../utils/index');
 const config = require('../config/index');
-const  PDF = require('handlebars-pdf');
+
 
 artefatosHistory = async (req, res) => {
-
-  const {key, user, date} = req.query;
-
-  try {
-    fs.mkdirSync(path.join(__dirname, '../pdf/'))
-  } catch (err) {
-    if (err.code !== 'EEXIST') throw err
-  }
 
 
   let table='';
@@ -54,7 +40,7 @@ artefatosHistory = async (req, res) => {
   
   .messageContainer {
     display: flex;
-    margin-left: 250px;
+    margin-left: 20px;
     padding: 0 1%;
     margin-top: 3px;
   }
@@ -141,15 +127,17 @@ artefatosHistory = async (req, res) => {
       const headers = {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': req.query.key
+          'Authorization':'Key c2FmcmFwcm9kZ2VyZGlnZW1wMTo2bEVPZVVjNUNOOW05cXBBMVlqaA=='
         }}
     const payload = {  
               "id": uuid.uuid(),
               "method": "get",
-              "uri": `/threads/${req.query.user}?$take=100&storageDate=${req.query.date}`
+              "uri": `/threads/5511999502859@wa.gw.msging.net?storageDate=2020-10-27&direction=desc`
   }
           
        const response2 = await axios.post(`${config.formalizacao.baseUrl}/commands`, payload,headers);
+
+       console.log("data", response2.data)
   
        const conversaBot =  response2.data.resource.items.map((e) => 
          {
@@ -158,7 +146,9 @@ artefatosHistory = async (req, res) => {
         }).map((e) => {
             return {
               autor:e.autor,
-              content: typeof e.content == 'object' ? JSON.stringify(e.content): e.content,
+              content: typeof e.content == 'object' ? e.content: e.content,
+              type: typeof e.content == 'object' ? e.content.type : 'text',
+              url: typeof e.content == 'object' ? e.content.uri : '',
               data: e.date.split('T')[0].split('-').reverse().join('/'),
               hora: e.date.split('T')[1].split('.')[0]
             }
@@ -178,7 +168,8 @@ artefatosHistory = async (req, res) => {
             <div class="messageBox backgroundLight">
               <p class="sentText pl-10  colorDark">${e.content}</p>
             </div>
-            <p class="sentText pl-10 ">ChatBot - ${e.data} - ${e.hora}</p>
+             <p class="sentText pl-10 ">ChatBot - ${e.data} - ${e.hora}</p>
+ 
             </div>
   
             `
@@ -187,8 +178,9 @@ artefatosHistory = async (req, res) => {
             table += `
             <div class="messageContainer justifyEnd">
             <div class="messageBox backgroundBlue">
-              <p class="sentText pl-11  colorWhite">${e.content}</p>
+              ${typeof e.content == 'object' ? '<audio controls><source src='+e.url+' type="audio/mpeg"></audio>' : '<p class="sentText pl-11  colorWhite">' + e.content + '</p>'}
             </div>
+  
             <p class="sentText pl-11 ">Cliente - ${e.data} - ${e.hora}</p>
             </div>
             ` 
@@ -197,46 +189,14 @@ artefatosHistory = async (req, res) => {
   
         table += `</div></body></html>`;
   
-    //    pdf.create(table, options).toFile(path.resolve('./pdf/'+`history-${req.query.date}.pdf`), function(err, result) {
 
+        console.log(table)
+          res.send(table);
 
-    //     if (err) return console.log(err);
-         
-
-  
-    //  });
-
-
-
-let document = {
-  template: table,
-  context: {
-      msg: 'Hello world'
-  },
-  path: "./pdf/history-"+req.query.date+".pdf"
-}
-
-PDF.create(document)
-.then(resp => {
-
-         // let file = fs.createReadStream('./pdf/'+`history-${req.query.date}.pdf`);
-         // let stat = fs.statSync('./pdf/'+`history-${req.query.date}.pdf`);
-          //res.setHeader('Content-Length', stat.size);
-          //res.setHeader('Content-Type', 'application/pdf');
-         // res.setHeader('Content-Disposition', `attachment; filename=history-${req.query.date}.pdf`);
-          
-          //file.pipe(res);
-
-  res.send(resp);
-
-})
-.catch(error => {
-  console.error(error)
-})
 
           
   }
 
 
 
-module.exports = {artefatoImage, artefatosHistory}
+module.exports = { artefatosHistory}
