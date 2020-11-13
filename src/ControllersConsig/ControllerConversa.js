@@ -124,7 +124,7 @@ artefatosHistory = async (req, res) => {
   };
 
 
-      const headers = {
+    const headers = {
         headers: {
           'Content-Type': 'application/json',
           'Authorization':'Key c2FmcmFwcm9kZ2VyZGlnZW1wMTo2bEVPZVVjNUNOOW05cXBBMVlqaA=='
@@ -178,7 +178,7 @@ artefatosHistory = async (req, res) => {
             table += `
             <div class="messageContainer justifyEnd">
             <div class="messageBox backgroundBlue">
-              ${typeof e.content == 'object' ? '<audio controls><source src='+e.url+' type="audio/mpeg"></audio>' : '<p class="sentText pl-11  colorWhite">' + e.content + '</p>'}
+              ${typeof e.content == 'object' ? ' <audio controls><source src="https://s3-sa-east-1.amazonaws.com/msging.net/iris/dcfe435e-4450-4277-bcf6-878d66048134" type="audio/mpeg"></source></audio>' : '<p class="sentText pl-11  colorWhite">' + e.content + '</p>'}
             </div>
   
             <p class="sentText pl-11 ">Cliente - ${e.data} - ${e.hora}</p>
@@ -188,9 +188,6 @@ artefatosHistory = async (req, res) => {
         })
   
         table += `</div></body></html>`;
-  
-
-        console.log(table)
           res.send(table);
 
 

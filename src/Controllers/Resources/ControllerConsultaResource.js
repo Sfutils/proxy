@@ -70,8 +70,70 @@ const payload = {
   
 
     res.status(200).json(responseObject.resource);
+ },
+
+ criarProtocolo = async (req, res) => {
+
+    console.log(req.headers['authorization']);
+    console.log(req.body);
+ 
+      const headers = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': req.headers['authorization']
+        }}
+      
+        axios.
+        post(`https://api.safra.com.br/vendas-servicos/atendimentos-clientes/v1/protocolos`, req.body, headers)
+        .then((resp) => {
+        const jsonText = JSON.stringify(resp.data);
+        const responseObject = JSON.parse(jsonText);
+        console.log(responseObject);
+        res.json(responseObject);
+
+      }).catch((err) => {
+      
+        console.log(err.response.data)
+      
+      res.status(err.response.status).json({error: err.response.data})
+    });
+
+ },
+
+ criarOcorrencia = async (req, res) => {
+
+   console.log(req.headers['authorization']);
+   console.log(req.body);
+
+  const headers = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': req.headers['authorization']
+    }}
+
+       axios.
+       post(`https://api.safra.com.br/vendas-servicos/atendimentos-clientes/v1/ocorrencias/1`, req.body, headers)
+       .then((resp) => {
+       const jsonText = JSON.stringify(resp.data);
+       const responseObject = JSON.parse(jsonText);
+
+       console.log(responseObject);
+       res.json(responseObject);
+
+     }).catch((err) => {
+       console.log(err.response.data)
+     res.status(err.response.status).json({error: err.response.data})
+   });
+
+
  }
+
+
+
+
 module.exports = {
   getResource,
-  updateResource
+  updateResource,
+  criarProtocolo,
+  criarOcorrencia
 }

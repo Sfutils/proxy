@@ -7,5 +7,7 @@ const ControllerConsultaResource = require('../../../Controllers/Resources/Contr
 
 routes.get('/delete', deletSchedule.scheduled);
 routes.get('/resource/:id', ControllerConsultaResource.getResource);
+routes.post('/protocolos', ControllerConsultaResource.criarProtocolo)
+routes.post('/ocorrencias', ControllerConsultaResource.criarOcorrencia)
 
 module.exports = routes;
