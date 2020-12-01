@@ -80,6 +80,7 @@ const payload = {
       const headers = {
         headers: {
           'Content-Type': 'application/json',
+          'accept': '*/*',
           'Authorization': req.headers['authorization']
         }}
       
@@ -108,6 +109,7 @@ const payload = {
   const headers = {
     headers: {
       'Content-Type': 'application/json',
+      'accept': '*/*',
       'Authorization': req.headers['authorization']
     }}
 
@@ -127,7 +129,13 @@ const payload = {
 
 
  }
+ logsBlip = async (req, res) => {
 
+  console.log(req.body);
+
+  res.json({"ok":"ok"});
+
+}
 
 
 
@@ -135,5 +143,6 @@ module.exports = {
   getResource,
   updateResource,
   criarProtocolo,
-  criarOcorrencia
+  criarOcorrencia,
+  logsBlip
 }

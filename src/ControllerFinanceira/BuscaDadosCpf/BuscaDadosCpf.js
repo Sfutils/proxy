@@ -20,6 +20,8 @@ BuscaDadosCpf =  (req, res) => {
   
    res.status(err.response.status).json({error: err.response.data})
  });
+ 
+ 
 
 }
 module.exports = {
