@@ -10,7 +10,7 @@ extratoEpf =  (req, res) => {
     }}
   
     axios.
-    get(`${config.financeira.baseUrl}/api/v1/epf/Contratos/${req.params.idContrato}/${req.params.QtdDias}/Extrato/Download`, headers)
+    get(`${config.financeira.baseUrl}/api/v1/epf/Contratos/${req.params.idContrato}/Extrato/Download`, headers)
     .then((resp) => {
     const jsonText = JSON.stringify(resp.data);
     const responseObject = JSON.parse(jsonText);
