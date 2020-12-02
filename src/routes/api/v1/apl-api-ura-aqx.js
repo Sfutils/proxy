@@ -77,7 +77,7 @@ routes
  routes
  .get('/api/v1/scd/Contratos/:cpfCnpj', 
  Contratos.ScdContratosDocumento.ScdContratosDocumento);
- routes.get('/api/v1/epf/Contratos/:idContrato/:QtdDias/Extrato/Download',  Contratos.EpfExtrato.extratoEpf);
+ routes.get('/api/v1/epf/Contratos/:idContrato/Extrato/Download',  Contratos.EpfExtrato.extratoEpf);
  routes
  .get('/api/v1/scd/Contratos/:cpfCnpj/Detalhado', 
  Contratos.ScdContratosDocumentoCompleto.ScdContratosDocumentoCompleto);
