@@ -118,7 +118,7 @@ routes
  routes
  .get('/api/v1/scd/IdentificaLojista/:cpfCnpj', IdentificaLojista.IdentificaLojista);
  routes
- .post('/api/v1/scd/LinhaDigitavel', LinhaDigitavel.LinhaDigitavel);
+ .post('/api/v2/scd/LinhaDigitavel', LinhaDigitavel.LinhaDigitavel);
  routes
  .get('/api/v1/epf/Portabilidade/:idCliente/:idContrato/Status', Portabilidade.Portabilidade);
  routes

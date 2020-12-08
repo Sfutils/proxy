@@ -10,7 +10,7 @@ LinhaDigitavel =  (req, res) => {
     }}
   
     axios.
-    post(`${config.financeira.baseUrl}/api/v1/scd/LinhaDigitavel`, req.body, headers)
+    post(`${config.financeira.baseUrl}/api/v2/scd/LinhaDigitavel`, req.body, headers)
     .then((resp) => {
     const jsonText = JSON.stringify(resp.data);
     const responseObject = JSON.parse(jsonText);
