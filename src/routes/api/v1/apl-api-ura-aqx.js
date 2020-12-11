@@ -49,7 +49,7 @@ routes
 routes
 .post('/api/v1/scd/AutenticacaoPositiva', AutenticacaoPositiva.AutenticacaoPositiva);
 routes
-.get('/api/v1/epf/BuscaDadosCpf/:idCliente', BuscaDadosCpf.BuscaDadosCpf);
+.get('/api/v2/epf/BuscaDadosCpf/:idCliente', BuscaDadosCpf.BuscaDadosCpf);
 routes
 .get('/api/v1/scd/Carnes/:idContrato', Carnes.Carnes.Carnes);
 routes
