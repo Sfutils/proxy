@@ -15,6 +15,7 @@ const ControllerPostBeneficios = require('../../../Controllers/DataPrev/Controll
 
 const ControllerContratos = require('../../../Controllers/Contratos/ControllerContratos');
 const ControllerContratosRefin = require('../../../Controllers/Contratos/ControllerContratosRefin');
+const ControllerContratosQuantidade = require('../../../Controllers/Contratos/ControllerContratosQuantidade');
 
 const ControllerNovoCalculo = require('../../../Controllers/Caculo/ControllerNovo');
 const ControllerRefinCalculo = require('../../../Controllers/Caculo/ControllerRefin');
@@ -37,11 +38,15 @@ routes
 routes
 .post('/DataprevBeneficios', ControllerPostBeneficios.postBeneficios);
 
+
 routes
 .get('/Contratos/:cpf', ControllerContratos.getContratos);
 routes
 .get('/Contratos/:cpf/:idConvenio/Refin', ControllerContratosRefin.getContratosRefin
 );
+
+routes.get('/Contratos/:cpf/:matricula/Quantidade', ControllerContratosQuantidade.getContratosQuantidade);
+
 
 routes
 .post('/Calculo/Novo', ControllerNovoCalculo.calculoNovo);
